@@ -19,7 +19,7 @@ vid = './video/streamlitVid/app_demo.webm'
 with open('swim_style.pkl','rb') as f:
     model = pickle.load(f)
 
-st.title('Detecting Swimming Styles using MediaPipe')
+st.title('Detecting Swimming Styles(freestyle, breaststroke and backstroke)')
 
 st.markdown(
     """
@@ -72,7 +72,7 @@ def image_resize(image, width=None, height=None, inter=cv2.INTER_AREA):
     return resized
 
 app_mode = st.sidebar.selectbox('Choose the App mode',
-['About Me','About App','Run on video']
+['About Me','About App','Test the Model']
 )
 
 if app_mode == 'About Me':
@@ -81,7 +81,7 @@ if app_mode == 'About Me':
     st.image(picture, caption= 'Atoyebi Omolara', width= 150)
     st.markdown("""
                 Hey, this is Atoyebi omolara, a master graduate of research and analytical chemistry, 
-                who has found interest in Data science and Analysis and proceeded to acquire a diploma in it by 
+                who has found interest in Data science and Analysis and proceeded to acquire a Certificate in it by 
                 attending EPICODE.
                 Thanks to EPICODE for the intense teaching and hands on experience as well as the knowledge and skills 
                 i acquired through her teaching Methodology.
@@ -114,7 +114,7 @@ elif app_mode == 'About App':
     dem = open(vid,'rb')
     out_vid = dem.read()
     st.video(out_vid)
-elif app_mode =='Run on video':
+elif app_mode =='Test the Model':
 
     st.subheader('Testing the model')
     st.set_option('deprecation.showfileUploaderEncoding', False)
@@ -237,10 +237,10 @@ elif app_mode =='Run on video':
                 
 
                 # Display Probability
-                cv2.putText(image, 'PROB'
-                            , (15,20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 2, cv2.LINE_AA)
-                cv2.putText(image, str(round(body_language_prob[np.argmax(body_language_prob)],2))
-                            , (10,60), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+                # cv2.putText(image, 'PROB'
+                #             , (15,20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 2, cv2.LINE_AA)
+                # cv2.putText(image, str(round(body_language_prob[np.argmax(body_language_prob)],2))
+                #             , (10,60), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
             except:
                 pass
